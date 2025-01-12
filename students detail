@@ -1,0 +1,124 @@
+# -students-detail-
+import java.util.ArrayList;
+import java.util.Scanner;
+
+class Student {
+    private String name;
+    private int rollNumber;
+    private double marks;
+
+    // Constructor
+    public Student(String name, int rollNumber, double marks) {
+        this.name = name;
+        this.rollNumber = rollNumber;
+        this.marks = marks;
+    }
+
+    // Getter methods
+    public String getName() {
+        return name;
+    }
+
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public double getMarks() {
+        return marks;
+    }
+
+    // Display student details
+    public void displayDetails() {
+        System.out.println("Name: " + name + ", Roll Number: " + rollNumber + ", Marks: " + marks);
+    }
+}
+
+public class StudentDetails {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+
+        System.out.println("Student Details Management System");
+        System.out.println("---------------------------------");
+
+        while (true) {
+            System.out.println("\nMenu:");
+            System.out.println("1. Add Student");
+            System.out.println("2. Display All Students");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    // Add a new student
+                    scanner.nextLine(); // Clear buffer
+                    System.out.print("Enter student name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter roll number: ");
+                    int rollNumber = scanner.nextInt();
+
+                    System.out.print("Enter marks: ");
+                    double marks = scanner.nextDouble();
+
+                    // Create a new Student object and add it to the list
+                    Student student = new Student(name, rollNumber, marks);
+                    students.add(student);
+
+                    System.out.println("Student added successfully!");
+                    break;
+
+                case 2:
+                    // Display all students
+                    if (students.isEmpty()) {
+                        System.out.println("No student records found.");
+                    } else {
+                        System.out.println("\nStudent Details:");
+                        for (Student s : students) {
+                            s.displayDetails();
+                        }
+                    }
+                    break;
+
+                case 3:
+                    // Exit the program
+                    System.out.println("Exiting... Goodbye!");
+                    scanner.close();
+                    System.exit(0);
+
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+        }
+    }
+}
+output:
+Student Details Management System
+---------------------------------
+
+Menu:
+1. Add Student
+2. Display All Students
+3. Exit
+Enter your choice: 1
+Enter student name: Alice
+Enter roll number: 101
+Enter marks: 92.5
+Student added successfully!
+
+Menu:
+1. Add Student
+2. Display All Students
+3. Exit
+Enter your choice: 2
+
+Student Details:
+Name: Alice, Roll Number: 101, Marks: 92.5
+
+Menu:
+1. Add Student
+2. Display All Students
+3. Exit
+Enter your choice: 3
+Exiting... Goodbye!
